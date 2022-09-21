@@ -17,6 +17,7 @@ class UserRepositoryTests {
     @Test
     @DisplayName("회원 생성")
     void t1() {
+        //암호화를 하지 않는 경우 {noop}을 붙이는 게 관례이다.
         SiteUser u1 = new SiteUser(null, "user1", "{noop}1234", "user1@test.com");
         SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
 

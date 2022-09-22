@@ -104,4 +104,6 @@ class UserRepositoryTests {
         assertThat(u2.getEmail()).isEqualTo("user2@test.com");
         assertThat(u2.getPassword()).isEqualTo("{noop}1234");
     }
+
+
 }

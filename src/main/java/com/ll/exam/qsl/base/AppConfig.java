@@ -11,6 +11,7 @@ public class AppConfig {
     //Bean을 넣어야 JPAQueryFactory를 제공해주는 것, 이게 있어야 QueryDSL을 쓸 수 있다.
     @Bean
     public JPAQueryFactory jpaQueryFactory(EntityManager entityManager) {
+
         return new JPAQueryFactory(entityManager);
     }
 }

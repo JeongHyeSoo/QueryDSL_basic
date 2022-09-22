@@ -6,12 +6,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@ActiveProfiles("test") // 테스트 모드 활성화
 class UserRepositoryTests {
     @Autowired
     private UserRepository userRepository;
@@ -20,21 +22,21 @@ class UserRepositoryTests {
     @DisplayName("회원 생성")
     void t1() {
         //암호화를 하지 않는 경우 {noop}을 붙이는 게 관례이다.
-        SiteUser u1 = SiteUser.builder()
-                .username("user1")
+        SiteUser u3 = SiteUser.builder()
+                .username("user3")
                 .password("{noop}1234")
-                .email("user1@test.com")
+                .email("user3@test.com")
                 .build();
 
-        SiteUser u2 = SiteUser.builder()
-                .username("user2")
+        SiteUser u4 = SiteUser.builder()
+                .username("user4")
                 .password("{noop}1234")
-                .email("user2@test.com")
+                .email("user4@test.com")
                 .build();
 
         // SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
 
-        userRepository.saveAll(Arrays.asList(u1, u2));
+        userRepository.saveAll(Arrays.asList(u3, u4));
     }
 
     @Test

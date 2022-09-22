@@ -20,8 +20,19 @@ class UserRepositoryTests {
     @DisplayName("회원 생성")
     void t1() {
         //암호화를 하지 않는 경우 {noop}을 붙이는 게 관례이다.
-        SiteUser u1 = new SiteUser(null, "user1", "{noop}1234", "user1@test.com");
-        SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
+        SiteUser u1 = SiteUser.builder()
+                .username("user1")
+                .password("{noop}1234")
+                .email("user1@test.com")
+                .build();
+
+        SiteUser u2 = SiteUser.builder()
+                .username("user2")
+                .password("{noop}1234")
+                .email("user2@test.com")
+                .build();
+
+        // SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
 
         userRepository.saveAll(Arrays.asList(u1, u2));
     }

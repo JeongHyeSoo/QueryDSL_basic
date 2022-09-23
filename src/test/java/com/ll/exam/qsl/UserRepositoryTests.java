@@ -200,29 +200,20 @@ class UserRepositoryTests {
             assertThat(u.getUsername()).isEqualTo("user1");
             assertThat(u.getEmail()).isEqualTo("user1@test.com");
             assertThat(u.getPassword()).isEqualTo("{noop}1234");
+    }
+    @Test
+    @DisplayName("회원에게 관심사를 등록할 수 있다.")
+    void t10() {
+        SiteUser u2 = userRepository.getQslUser(2L);
 
+        u2.addInterestKeywordContent("축구");
+        u2.addInterestKeywordContent("롤");
+        u2.addInterestKeywordContent("헬스");
+        u2.addInterestKeywordContent("헬스"); // 중복등록은 무시
 
-        // 검색어 : user1
-        // 한 페이지에 나올 수 있는 아이템 수 : 1개
-        // 현재 페이지 : 1
-        // 정렬 : id 역순
-
-        // 내용 가져오는 SQL
-        /*
-        SELECT site_user.*
-        FROM site_user
-        WHERE site_user.username LIKE '%user%'
-        OR site_user.email LIKE '%user%'
-        ORDER BY site_user.id ASC
-        LIMIT 1, 1
-         */
-
-        // 전체 개수 계산하는 SQL
-        /*
-        SELECT COUNT(*)
-        FROM site_user
-        WHERE site_user.username LIKE '%user%'
-        OR site_user.email LIKE '%user%'
-         */
+        userRepository.save(u2);
+        // 엔티티클래스 : InterestKeyword(interest_keyword 테이블)
+        // 중간테이블도 생성되어야 함, 힌트 : @ManyToMany
+        // interest_keyword 테이블에 축구, 롤, 헬스에 해당하는 row 3개 생성
     }
 }

@@ -221,7 +221,7 @@ class UserRepositoryTests {
     @Test
     @DisplayName("축구에 관심 있는 회원들 검색")
     void t11() {
-        List<SiteUser> users = userRepository.getQslUsersByInterestKeyword("축구")
+        List<SiteUser> users = userRepository.getQslUsersByInterestKeyword("축구");
 
         assertThat(users.size()).isEqualTo(1);
         SiteUser u = users.get(0);

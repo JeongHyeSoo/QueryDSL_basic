@@ -11,10 +11,12 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class InterestKeyword {
     @Id
+    @EqualsAndHashCode.Include
     private String content;
-
+/*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -29,4 +31,6 @@ public class InterestKeyword {
     public int hashCode() {
         return content.hashCode();
     }
+
+ */
 }

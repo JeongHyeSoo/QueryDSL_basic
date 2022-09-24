@@ -17,6 +17,7 @@ import org.springframework.data.support.PageableExecutionUtils;
 import java.util.List;
 import java.util.function.LongSupplier;
 
+import static com.ll.exam.qsl.interestkeyword.entity.QInterestKeyword.interestKeyword;
 import static com.ll.exam.qsl.user.entity.QSiteUser.siteUser;
 
 @RequiredArgsConstructor
@@ -117,9 +118,9 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         return jpaQueryFactory
                 .selectFrom(siteUser)//select(siteUser)+from(siteUser)
-                .innerJoin(siteUser.interestKeywords,IK)
+                .innerJoin(siteUser.interestKeywords, interestKeyword)
                 .where(
-                        IK.content.eq(keywordContent)
+                        interestKeyword.content.eq(keywordContent)
                 )
                 .fetch();
     }
